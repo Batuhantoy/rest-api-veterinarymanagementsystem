@@ -35,6 +35,8 @@ public class DoctorController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+
+    // Değerlendirme formu 12
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody AddDoctorRequest request){
         return ResponseHandler.responseBuilder(

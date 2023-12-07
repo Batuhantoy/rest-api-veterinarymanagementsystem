@@ -6,9 +6,7 @@ import dev.patika.spring.core.mapper.ICustomerMapper;
 import dev.patika.spring.dal.abstracts.ICustomerRepository;
 import dev.patika.spring.model.dto.requests.AddCustomerRequest;
 import dev.patika.spring.model.dto.requests.UpdateCustomerRequest;
-import dev.patika.spring.model.dto.responses.GetAnimalResponse;
 import dev.patika.spring.model.dto.responses.GetCustomerResponse;
-import dev.patika.spring.model.entity.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -53,23 +51,17 @@ public class CustomerManager implements ICustomerService {
 
     @Override
     public GetCustomerResponse findById(Long id) {
-        if(customerRepository.existsById(id)){
+        return customerMapper.toResponse(customerRepository.findById(id).orElse(null));
+        /*if(customerRepository.existsById(id)){
             return customerMapper.toResponse(customerRepository.findById(id).get());
         }
-        return null;
+        return null;*/
     }
 
+    // Değerlendirme formu 17
     @Override
     public List<GetCustomerResponse> findByNameLike(String name) {
         return customerMapper.toResponse(customerRepository.findByNameStartingWith(name));
     }
 
-   /* @Override
-    public List<GetAnimalResponse> findAnimalsByCustomer(Long id) {
-        Customer customer = customerRepository.findById(id).get();
-        if(customer!=null){
-            return animalMapper.toResponse(customer.getAnimals());
-        }
-        return null;
-    }*/
 }

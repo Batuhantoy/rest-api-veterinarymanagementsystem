@@ -39,6 +39,8 @@ public class AppointmentController {
         return ResponseHandler
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
+
+    // Değerlendirme formu 24
     @GetMapping("/search/doctor")
     public ResponseEntity<Object> findByDateAndDoctor(@RequestParam(value = "startDate") LocalDate startDate,@RequestParam(value = "endDate")  LocalDate endDate,@RequestParam(value = "doctorName") String doctorName){
         List<GetAppointmentResponse> data = appointmentService.findByBetweenDateAndDoctor(startDate, endDate, doctorName);
@@ -51,6 +53,7 @@ public class AppointmentController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+    // Değerlendirme formu 23
     @GetMapping("/search/animal")
     public ResponseEntity<Object> findByDateAndAnimal(@RequestParam(value = "startDate") LocalDate startDate,@RequestParam(value = "endDate")  LocalDate endDate,@RequestParam(value = "animalName") String animalName){
         List<GetAppointmentResponse> data = appointmentService.findByBetweenDateAndAnimal(startDate, endDate, animalName);
@@ -63,6 +66,7 @@ public class AppointmentController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+    // Değerlendirme formu 14
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody AddAppointmentRequest request){
         AddAppointmentRequest added = appointmentService.add(request);

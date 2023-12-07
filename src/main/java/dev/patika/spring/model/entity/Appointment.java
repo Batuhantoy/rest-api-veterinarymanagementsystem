@@ -16,7 +16,7 @@ public class Appointment {
 
     @Id
     @GeneratedValue(generator = "appointment_gen",strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "appointment_gen",sequenceName = "appointment_seq",initialValue = 50,allocationSize = 1)
+    @SequenceGenerator(name = "appointment_gen",sequenceName = "appointment_seq",allocationSize = 1)
     @Column(name = "appointment_id",columnDefinition = "serial")
     private Long id;
 

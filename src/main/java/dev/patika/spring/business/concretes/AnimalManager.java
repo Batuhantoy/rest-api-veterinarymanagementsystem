@@ -6,12 +6,13 @@ import dev.patika.spring.dal.abstracts.IAnimalRepository;
 import dev.patika.spring.model.dto.requests.AddAnimalRequest;
 import dev.patika.spring.model.dto.requests.UpdateAnimalRequest;
 import dev.patika.spring.model.dto.responses.GetAnimalResponse;
-import dev.patika.spring.model.dto.responses.GetCustomerResponse;
+import dev.patika.spring.model.entity.Animal;
 import lombok.AllArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -51,10 +52,17 @@ public class AnimalManager implements IAnimalService {
 
     @Override
     public GetAnimalResponse findById(Long id) {
-        if(animalRepository.existsById(id)){
+        Optional<Animal> animal = animalRepository.findById(id);
+        // Değerlendirme formu 25
+        if(animal.isEmpty()){
+            throw new RuntimeException(id + " id’li kayıt sistemde bulunamadı.");
+        }
+        return animalMapper.toResponse(animal.get());
+
+        /*if(animalRepository.existsById(id)){
             return animalMapper.toResponse(animalRepository.findById(id).get());
         }
-        return null;
+        return null;*/
     }
 
     @Override

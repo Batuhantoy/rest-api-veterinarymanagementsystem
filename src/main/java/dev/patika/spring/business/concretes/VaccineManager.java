@@ -20,6 +20,7 @@ public class VaccineManager implements IVaccineService {
 
     @Override
     public AddVaccineRequest add(AddVaccineRequest request) {
+        // Değerlendirme formu 19
         if(vaccineRepository.isReadyForVaccine(request.getName(), request.getCode(),request.getAnimal(),request.getProtectionStartDate())){
             vaccineRepository.save(vaccineMapper.toEntity(request));
             return request;
@@ -58,10 +59,11 @@ public class VaccineManager implements IVaccineService {
 
     @Override
     public GetVaccineResponse findById(Long id) {
-        if(vaccineRepository.existsById(id)){
+        return vaccineMapper.toResponse(vaccineRepository.findById(id).orElse(null));
+        /*if(vaccineRepository.existsById(id)){
             return vaccineMapper.toResponse(vaccineRepository.findById(id).get());
         }
-        return null;
+        return null;*/
     }
 
     @Override

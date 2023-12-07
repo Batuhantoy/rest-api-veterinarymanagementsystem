@@ -39,6 +39,7 @@ public class CustomerController {
                 .responseBuilder("Request by Name", HttpStatus.OK,customerService.findByNameLike(name));
     }
 
+    // Değerlendirme formu 10
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody AddCustomerRequest request){
         return ResponseHandler.responseBuilder(

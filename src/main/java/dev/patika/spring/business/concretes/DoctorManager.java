@@ -50,9 +50,10 @@ public class DoctorManager implements IDoctorService {
 
     @Override
     public GetDoctorResponse findById(Long id) {
-        if(doctorRepository.existsById(id)){
+        return doctorMapper.toResponse(doctorRepository.findById(id).orElse(null));
+        /*if(doctorRepository.existsById(id)){
             return doctorMapper.toResponse(doctorRepository.findById(id).get());
         }
-        return null;
+        return null;*/
     }
 }

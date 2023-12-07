@@ -38,11 +38,14 @@ public class AnimalController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+    // Değerlendirme formu 16
     @GetMapping("/search")
     public ResponseEntity<Object> findByNameLike(@RequestParam("name") String name){
         return ResponseHandler
                 .responseBuilder("Request by Name", HttpStatus.OK,animalService.findByNameLike(name));
     }
+
+    // Değerlendirme formu 18
     @GetMapping("/customer/{customerId}")
     public ResponseEntity<Object> findByCustomer(@PathVariable("customerId") Long id){
         List<GetAnimalResponse> data = animalService.findByCustomer(id);
@@ -54,6 +57,8 @@ public class AnimalController {
                 .responseBuilder("ERROR: No such Customer", HttpStatus.BAD_REQUEST);
     }
 
+
+    // Değerlendirme formu 11
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody AddAnimalRequest request){
         return ResponseHandler.responseBuilder(

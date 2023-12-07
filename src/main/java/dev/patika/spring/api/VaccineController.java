@@ -30,6 +30,7 @@ public class VaccineController {
                 .responseBuilder("Requested all vaccines", HttpStatus.OK,vaccineService.findAll());
     }
 
+    // Değerlendirme formu 20
     @GetMapping("/search/{animalId}")
     public ResponseEntity<Object> findByAnimalId(@PathVariable("animalId") Long id){
         List<GetVaccineResponse> data = vaccineService.findByAnimalId(id);
@@ -52,6 +53,7 @@ public class VaccineController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+    // Değerlendirme formu 21
     @GetMapping("/search")
     public ResponseEntity<Object> findByDates(@RequestParam(value = "startDate")  LocalDate startDate,@RequestParam(value="endDate") LocalDate endDate){
         List<GetVaccineResponse> data = vaccineService.findByDates(startDate, endDate);
@@ -63,6 +65,7 @@ public class VaccineController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+    // Değerlendirme formu 15
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody AddVaccineRequest request){
         AddVaccineRequest data = vaccineService.add(request);

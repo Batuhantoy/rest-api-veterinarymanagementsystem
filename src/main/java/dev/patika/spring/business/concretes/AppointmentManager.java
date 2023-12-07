@@ -8,12 +8,14 @@ import dev.patika.spring.dal.abstracts.IAppointmentRepository;
 import dev.patika.spring.model.dto.requests.AddAppointmentRequest;
 import dev.patika.spring.model.dto.requests.UpdateAppointmentRequest;
 import dev.patika.spring.model.dto.responses.GetAppointmentResponse;
+import dev.patika.spring.model.entity.Appointment;
 import dev.patika.spring.model.entity.Doctor;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -26,7 +28,7 @@ public class AppointmentManager implements IAppointmentService {
 
     @Override
     public AddAppointmentRequest add(AddAppointmentRequest request) {
-
+        // Değerlendirme formu 22
         if(availableService.existsByAvailableDateAndDoctor(request.getAppointmentDate().toLocalDate(),request.getDoctor())
         && !appointmentRepository.existsByAppointmentDateAndDoctor(request.getAppointmentDate(),request.getDoctor())){
             appointmentRepository.save(appointmentMapper.toEntity(request));
@@ -46,6 +48,7 @@ public class AppointmentManager implements IAppointmentService {
 
     @Override
     public boolean delete(Long id) {
+
         if(appointmentRepository.existsById(id)){
             appointmentRepository.deleteById(id);
             return true;
@@ -60,11 +63,14 @@ public class AppointmentManager implements IAppointmentService {
 
     @Override
     public GetAppointmentResponse findById(Long id) {
-        if(appointmentRepository.existsById(id)){
+
+        return appointmentMapper.toResponse(appointmentRepository.findById(id).orElse(null));
+        /*if(appointmentRepository.existsById(id)){
             return appointmentMapper.toResponse(appointmentRepository.findById(id).get());
         }
-        return null;
+        return null;*/
     }
+
 
     @Override
     public List<GetAppointmentResponse> findByBetweenDateAndDoctor(LocalDate startDate, LocalDate endDate, String doctorName) {
@@ -73,6 +79,7 @@ public class AppointmentManager implements IAppointmentService {
         }
         return null;
     }
+
 
     @Override
     public List<GetAppointmentResponse> findByBetweenDateAndAnimal(LocalDate startDate, LocalDate endDate, String animalName) {

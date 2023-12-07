@@ -20,6 +20,7 @@ public class AvailableDateManager implements IAvailableDateService {
     private IAvailableDateMapper mapper;
 
 
+
     @Override
     public AddAvailableDateRequest add(AddAvailableDateRequest request) {
         repository.save(mapper.toEntity(request));
@@ -51,10 +52,11 @@ public class AvailableDateManager implements IAvailableDateService {
 
     @Override
     public GetAvailableDateResponse findById(Long id) {
-        if(repository.existsById(id)){
+        return mapper.toResponse(repository.findById(id).orElse(null));
+        /*if(repository.existsById(id)){
             return mapper.toResponse(repository.findById(id).get());
         }
-        return null;
+        return null;*/
     }
 
     @Override

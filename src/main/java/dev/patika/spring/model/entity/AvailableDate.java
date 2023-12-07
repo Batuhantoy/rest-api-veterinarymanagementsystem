@@ -17,7 +17,7 @@ public class AvailableDate {
 
     @Id
     @GeneratedValue(generator = "available_date_gen",strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "appointment_gen",sequenceName = "available_date_seq",initialValue = 50,allocationSize = 1)
+    @SequenceGenerator(name = "appointment_gen",sequenceName = "available_date_seq",allocationSize = 1)
     @Column(name = "available_date_id",columnDefinition = "serial")
     private Long id;
 

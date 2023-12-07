@@ -15,7 +15,7 @@ import java.time.LocalDate;
 public class Vaccine {
     @Id
     @GeneratedValue(generator = "vaccine_gen",strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "vaccine_gen",sequenceName = "vaccine_seq",initialValue = 50,allocationSize = 1)
+    @SequenceGenerator(name = "vaccine_gen",sequenceName = "vaccine_seq",allocationSize = 1)
     @Column(name = "vaccine_id",columnDefinition = "serial")
     private Long id;
 

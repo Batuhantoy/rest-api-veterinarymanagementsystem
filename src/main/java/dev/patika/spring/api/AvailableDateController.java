@@ -37,6 +37,7 @@ public class AvailableDateController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+    // Değerlendirme formu 13
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody AddAvailableDateRequest request){
         return ResponseHandler.responseBuilder(
