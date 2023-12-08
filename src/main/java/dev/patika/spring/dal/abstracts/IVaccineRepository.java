@@ -22,9 +22,8 @@ public interface IVaccineRepository extends JpaRepository<Vaccine,Long> {
     List<Vaccine> findByAnimalId(Long animalId);
 
     //SELECT * FROM tbl_vaccine WHERE (vaccine_protection_end-'2023-10-01')>0 AND (vaccine_protection_end-'2023-10-01')<10
-    @Query("SELECT v FROM Vaccine v WHERE v.protectionStartDate<=:startDate AND v.protectionEndDate>=:endDate")
+    @Query(value = "SELECT * FROM tbl_vaccine WHERE vaccine_protection_end>=:startDate AND vaccine_protection_end<=:endDate",nativeQuery = true)
     List<Vaccine> findByDates(LocalDate startDate,LocalDate endDate);
-
 
 
 }

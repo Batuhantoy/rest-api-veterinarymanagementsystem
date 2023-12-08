@@ -12,10 +12,11 @@
 - Date and time will be entered when creating an appointment,
 - When making an appointment, the doctor's available days should be checked, and the date and time should be checked from the appointment records. If there is no conflict in the records, an appointment should be created.
 
-
 ![](/ss/ss1.PNG)
 
 ## Entities in the Project
+
+![](UML%20Class%20Diagram.PNG)
 
 Animal
 
