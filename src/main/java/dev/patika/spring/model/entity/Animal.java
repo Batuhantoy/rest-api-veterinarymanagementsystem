@@ -18,7 +18,7 @@ public class Animal {
 
     @Id
     @GeneratedValue(generator = "animal_gen",strategy = GenerationType.AUTO)
-    @SequenceGenerator(name = "animal_gen",sequenceName = "animal_seq",allocationSize = 1)
+    @SequenceGenerator(name = "animal_gen",sequenceName = "animal_seq",allocationSize = 1,initialValue = 4)
     @Column(name = "animal_id",columnDefinition = "serial")
     private Long id;
 

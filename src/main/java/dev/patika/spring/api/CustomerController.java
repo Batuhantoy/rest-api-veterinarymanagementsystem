@@ -33,6 +33,7 @@ public class CustomerController {
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
 
+    // Değerlendirme formu 17
     @GetMapping("/search")
     public ResponseEntity<Object> findByNameLike(@RequestParam("name") String name){
         return ResponseHandler
@@ -42,10 +43,17 @@ public class CustomerController {
     // Değerlendirme formu 10
     @PostMapping
     public ResponseEntity<Object> save(@RequestBody AddCustomerRequest request){
+        AddCustomerRequest data = customerService.add(request);
+        if(data!=null){
+            return ResponseHandler.responseBuilder(
+                    "Create a Customer request",
+                    HttpStatus.CREATED,
+                    data
+            );
+        }
         return ResponseHandler.responseBuilder(
-                "Create a Customer request",
-                HttpStatus.CREATED,
-                customerService.add(request)
+                "ERROR: This mail is used",
+                HttpStatus.BAD_REQUEST
         );
     }
     @PutMapping

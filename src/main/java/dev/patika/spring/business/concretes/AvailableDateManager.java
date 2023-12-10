@@ -61,6 +61,7 @@ public class AvailableDateManager implements IAvailableDateService {
 
     @Override
     public boolean existsByAvailableDateAndDoctor(LocalDate availableDate, Doctor doctor) {
+
         return repository.existsByAvailableDateAndDoctor(availableDate, doctor);
     }
 }

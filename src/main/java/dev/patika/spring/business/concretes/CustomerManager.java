@@ -17,13 +17,15 @@ public class CustomerManager implements ICustomerService {
 
     private final ICustomerRepository customerRepository;
     private ICustomerMapper customerMapper;
-    private IAnimalMapper animalMapper;
 
 
     @Override
     public AddCustomerRequest add(AddCustomerRequest request) {
-        customerRepository.save(customerMapper.toEntity(request));
-        return request;
+        if(!customerRepository.existsByMail(request.getMail())){
+            customerRepository.save(customerMapper.toEntity(request));
+            return request;
+        }
+        return null;
     }
 
     @Override
@@ -52,10 +54,6 @@ public class CustomerManager implements ICustomerService {
     @Override
     public GetCustomerResponse findById(Long id) {
         return customerMapper.toResponse(customerRepository.findById(id).orElse(null));
-        /*if(customerRepository.existsById(id)){
-            return customerMapper.toResponse(customerRepository.findById(id).get());
-        }
-        return null;*/
     }
 
     // Değerlendirme formu 17
