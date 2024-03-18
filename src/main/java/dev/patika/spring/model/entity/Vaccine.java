@@ -39,4 +39,8 @@ public class Vaccine {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "animal_id",referencedColumnName = "animal_id")
     private Animal animal;
+
+    @JoinColumn(name = "report_id")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Report report;
 }

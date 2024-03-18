@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAvailableDateResponse {
+    private Long id;
     private LocalDate availableDate;
     private Doctor doctor;
 }

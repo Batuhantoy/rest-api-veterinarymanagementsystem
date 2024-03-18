@@ -1,5 +1,6 @@
 package dev.patika.spring.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,5 +34,8 @@ public class Appointment {
     @JoinColumn(name = "doctor_id",referencedColumnName = "doctor_id")
     private Doctor doctor;
 
+    @OneToOne(mappedBy = "appointment", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private Report report;
 
 }

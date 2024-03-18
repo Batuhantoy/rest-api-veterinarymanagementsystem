@@ -6,6 +6,7 @@ import dev.patika.spring.dal.abstracts.IVaccineRepository;
 import dev.patika.spring.model.dto.requests.AddVaccineRequest;
 import dev.patika.spring.model.dto.requests.UpdateVaccineRequest;
 import dev.patika.spring.model.dto.responses.GetVaccineResponse;
+import dev.patika.spring.model.entity.Vaccine;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +65,10 @@ public class VaccineManager implements IVaccineService {
             return vaccineMapper.toResponse(vaccineRepository.findById(id).get());
         }
         return null;*/
+    }
+    @Override
+    public List<Vaccine> findByName(String name) {
+        return vaccineRepository.findByName(name);
     }
 
     @Override

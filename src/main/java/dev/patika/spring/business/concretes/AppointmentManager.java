@@ -57,14 +57,14 @@ public class AppointmentManager implements IAppointmentService {
     }
 
     @Override
-    public List<GetAppointmentResponse> findAll() {
-        return appointmentMapper.toResponse(appointmentRepository.findAll());
+    public List<Appointment> findAll() {
+        return appointmentRepository.findAll();
     }
 
     @Override
-    public GetAppointmentResponse findById(Long id) {
+    public Appointment findById(Long id) {
 
-        return appointmentMapper.toResponse(appointmentRepository.findById(id).orElse(null));
+        return appointmentRepository.findById(id).orElse(null);
         /*if(appointmentRepository.existsById(id)){
             return appointmentMapper.toResponse(appointmentRepository.findById(id).get());
         }

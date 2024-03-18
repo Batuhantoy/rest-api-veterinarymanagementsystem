@@ -8,6 +8,7 @@ import dev.patika.spring.model.dto.requests.UpdateCustomerRequest;
 import dev.patika.spring.model.dto.requests.UpdateVaccineRequest;
 import dev.patika.spring.model.dto.responses.GetAvailableDateResponse;
 import dev.patika.spring.model.dto.responses.GetVaccineResponse;
+import dev.patika.spring.model.entity.Vaccine;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,6 +64,12 @@ public class VaccineController {
         }
         return ResponseHandler
                 .responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/byName")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Vaccine> findByName(@RequestParam String name) {
+        return vaccineService.findByName(name);
     }
 
     // Değerlendirme formu 15

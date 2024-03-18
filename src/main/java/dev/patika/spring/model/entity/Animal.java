@@ -46,12 +46,13 @@ public class Animal {
     private Customer customer;
 
     // I think this should not be remove cascade
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "animal", cascade = CascadeType.REMOVE)
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "animal",cascade = CascadeType.REMOVE)
     private List<Vaccine> vaccines;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "animal", cascade = CascadeType.REMOVE)
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "animal",cascade = CascadeType.REMOVE)
     private List<Appointment> appointments;
 
 }

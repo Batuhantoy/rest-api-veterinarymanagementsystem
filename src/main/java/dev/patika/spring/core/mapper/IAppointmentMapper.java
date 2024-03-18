@@ -16,6 +16,7 @@ import java.util.List;
 @Mapper
 public interface IAppointmentMapper {
     Appointment toEntity(AddAppointmentRequest request);
+    Appointment responseToEntity(GetAppointmentResponse request);
     GetAppointmentResponse toResponse(Appointment appointment);
     List<GetAppointmentResponse> toResponse(List<Appointment> appointment);
 

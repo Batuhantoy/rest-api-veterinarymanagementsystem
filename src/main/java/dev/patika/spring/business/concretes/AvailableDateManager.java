@@ -6,6 +6,7 @@ import dev.patika.spring.dal.abstracts.IAvailableDateRepository;
 import dev.patika.spring.model.dto.requests.AddAvailableDateRequest;
 import dev.patika.spring.model.dto.requests.UpdateAvailableDateRequest;
 import dev.patika.spring.model.dto.responses.GetAvailableDateResponse;
+import dev.patika.spring.model.entity.AvailableDate;
 import dev.patika.spring.model.entity.Doctor;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -46,13 +47,13 @@ public class AvailableDateManager implements IAvailableDateService {
     }
 
     @Override
-    public List<GetAvailableDateResponse> findAll() {
-        return mapper.toResponse(repository.findAll());
+    public List<AvailableDate> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public GetAvailableDateResponse findById(Long id) {
-        return mapper.toResponse(repository.findById(id).orElse(null));
+    public AvailableDate findById(Long id) {
+        return repository.findById(id).orElse(null);
         /*if(repository.existsById(id)){
             return mapper.toResponse(repository.findById(id).get());
         }

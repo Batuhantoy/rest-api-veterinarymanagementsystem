@@ -7,6 +7,7 @@ import dev.patika.spring.dal.abstracts.ICustomerRepository;
 import dev.patika.spring.model.dto.requests.AddCustomerRequest;
 import dev.patika.spring.model.dto.requests.UpdateCustomerRequest;
 import dev.patika.spring.model.dto.responses.GetCustomerResponse;
+import dev.patika.spring.model.entity.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -47,8 +48,8 @@ public class CustomerManager implements ICustomerService {
     }
 
     @Override
-    public List<GetCustomerResponse> findAll() {
-        return customerMapper.toResponse(customerRepository.findAll());
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
     }
 
     @Override

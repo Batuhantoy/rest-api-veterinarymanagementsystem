@@ -44,13 +44,13 @@ public class DoctorManager implements IDoctorService {
     }
 
     @Override
-    public List<GetDoctorResponse> findAll() {
-        return doctorMapper.toResponse(doctorRepository.findAll());
+    public List<Doctor> findAll() {
+        return doctorRepository.findAll();
     }
 
     @Override
-    public GetDoctorResponse findById(Long id) {
-        return doctorMapper.toResponse(doctorRepository.findById(id).orElse(null));
+    public Doctor findById(Long id) {
+        return doctorRepository.findById(id).orElse(null);
         /*if(doctorRepository.existsById(id)){
             return doctorMapper.toResponse(doctorRepository.findById(id).get());
         }

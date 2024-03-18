@@ -12,7 +12,7 @@ public interface ICustomerService {
     AddCustomerRequest add(AddCustomerRequest request);
     UpdateCustomerRequest update(UpdateCustomerRequest request);
     boolean delete(Long id);
-    List<GetCustomerResponse> findAll();
+    List<Customer> findAll();
     GetCustomerResponse findById(Long id);
     List<GetCustomerResponse> findByNameLike(String name);
 }

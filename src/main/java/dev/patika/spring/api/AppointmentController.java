@@ -8,6 +8,7 @@ import dev.patika.spring.model.dto.requests.UpdateAnimalRequest;
 import dev.patika.spring.model.dto.requests.UpdateAppointmentRequest;
 import dev.patika.spring.model.dto.responses.GetAnimalResponse;
 import dev.patika.spring.model.dto.responses.GetAppointmentResponse;
+import dev.patika.spring.model.entity.Appointment;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class AppointmentController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable("id") Long id){
-        GetAppointmentResponse data = appointmentService.findById(id);
+        Appointment data = appointmentService.findById(id);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested all appointments", HttpStatus.OK,data);

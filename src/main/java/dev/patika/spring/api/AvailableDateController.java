@@ -8,10 +8,13 @@ import dev.patika.spring.model.dto.requests.UpdateAvailableDateRequest;
 import dev.patika.spring.model.dto.requests.UpdateCustomerRequest;
 import dev.patika.spring.model.dto.responses.GetAppointmentResponse;
 import dev.patika.spring.model.dto.responses.GetAvailableDateResponse;
+import dev.patika.spring.model.entity.AvailableDate;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/availabledates")
@@ -28,7 +31,7 @@ public class AvailableDateController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable("id") Long id){
-        GetAvailableDateResponse data = service.findById(id);
+        AvailableDate data = service.findById(id);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested AvailableDate by Id", HttpStatus.OK,data);

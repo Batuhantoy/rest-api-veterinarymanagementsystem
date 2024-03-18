@@ -36,11 +36,11 @@ public class Doctor {
     @Column(name = "doctor_city",length = 100,nullable = false)
     private String city;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "doctor",cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Appointment> appointments;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "doctor",cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<AvailableDate> availableDates;
 }

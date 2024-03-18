@@ -11,6 +11,6 @@ public interface IDoctorService {
     AddDoctorRequest add(AddDoctorRequest request);
     UpdateDoctorRequest update(UpdateDoctorRequest request);
     boolean delete(Long id);
-    List<GetDoctorResponse> findAll();
-    GetDoctorResponse findById(Long id);
+    List<Doctor> findAll();
+    Doctor findById(Long id);
 }
