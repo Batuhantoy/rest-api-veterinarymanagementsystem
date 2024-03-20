@@ -44,7 +44,7 @@ public class AppointmentController {
     // Değerlendirme formu 24
     @GetMapping("/search/doctor")
     public ResponseEntity<Object> findByDateAndDoctor(@RequestParam(value = "startDate") LocalDate startDate,@RequestParam(value = "endDate")  LocalDate endDate,@RequestParam(value = "doctorName") String doctorName){
-        List<GetAppointmentResponse> data = appointmentService.findByBetweenDateAndDoctor(startDate, endDate, doctorName);
+        List<Appointment> data = appointmentService.findByBetweenDateAndDoctor(startDate, endDate, doctorName);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested appointments", HttpStatus.OK,data);
@@ -57,7 +57,7 @@ public class AppointmentController {
     // Değerlendirme formu 23
     @GetMapping("/search/animal")
     public ResponseEntity<Object> findByDateAndAnimal(@RequestParam(value = "startDate") LocalDate startDate,@RequestParam(value = "endDate")  LocalDate endDate,@RequestParam(value = "animalName") String animalName){
-        List<GetAppointmentResponse> data = appointmentService.findByBetweenDateAndAnimal(startDate, endDate, animalName);
+        List<Appointment> data = appointmentService.findByBetweenDateAndAnimal(startDate, endDate, animalName);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested appointments", HttpStatus.OK,data);

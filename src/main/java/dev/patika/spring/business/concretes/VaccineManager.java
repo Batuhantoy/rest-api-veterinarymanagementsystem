@@ -49,18 +49,18 @@ public class VaccineManager implements IVaccineService {
     }
 
     @Override
-    public List<GetVaccineResponse> findAll() {
-        return vaccineMapper.toResponse(vaccineRepository.findAll());
+    public List<Vaccine> findAll() {
+        return vaccineRepository.findAll();
     }
 
     @Override
-    public List<GetVaccineResponse> findByAnimalId(Long animalId) {
-        return vaccineMapper.toResponse(vaccineRepository.findByAnimalId(animalId));
+    public List<Vaccine> findByAnimalId(Long animalId) {
+        return vaccineRepository.findByAnimalId(animalId);
     }
 
     @Override
-    public GetVaccineResponse findById(Long id) {
-        return vaccineMapper.toResponse(vaccineRepository.findById(id).orElse(null));
+    public Vaccine findById(Long id) {
+        return vaccineRepository.findById(id).orElse(null);
         /*if(vaccineRepository.existsById(id)){
             return vaccineMapper.toResponse(vaccineRepository.findById(id).get());
         }
@@ -72,7 +72,7 @@ public class VaccineManager implements IVaccineService {
     }
 
     @Override
-    public List<GetVaccineResponse> findByDates(LocalDate startDate, LocalDate endDate) {
-        return vaccineMapper.toResponse(vaccineRepository.findByDates(startDate, endDate));
+    public List<Vaccine> findByDates(LocalDate startDate, LocalDate endDate) {
+        return vaccineRepository.findByDates(startDate, endDate);
     }
 }

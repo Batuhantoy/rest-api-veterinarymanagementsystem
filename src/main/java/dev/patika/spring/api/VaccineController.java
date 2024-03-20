@@ -34,7 +34,7 @@ public class VaccineController {
     // Değerlendirme formu 20
     @GetMapping("/search/{animalId}")
     public ResponseEntity<Object> findByAnimalId(@PathVariable("animalId") Long id){
-        List<GetVaccineResponse> data = vaccineService.findByAnimalId(id);
+        List<Vaccine> data = vaccineService.findByAnimalId(id);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested Vaccines by Animal Id", HttpStatus.OK,data);
@@ -45,7 +45,7 @@ public class VaccineController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable("id") Long id){
-        GetVaccineResponse data = vaccineService.findById(id);
+        Vaccine data = vaccineService.findById(id);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested Vaccine by Id", HttpStatus.OK,data);
@@ -57,7 +57,7 @@ public class VaccineController {
     // Değerlendirme formu 21
     @GetMapping("/search")
     public ResponseEntity<Object> findByDates(@RequestParam(value = "startDate")  LocalDate startDate,@RequestParam(value="endDate") LocalDate endDate){
-        List<GetVaccineResponse> data = vaccineService.findByDates(startDate, endDate);
+        List<Vaccine> data = vaccineService.findByDates(startDate, endDate);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested Vaccines by Dates", HttpStatus.OK,data);
@@ -108,5 +108,4 @@ public class VaccineController {
         }
         return ResponseHandler.responseBuilder("ERROR: No such Element", HttpStatus.BAD_REQUEST);
     }
-
 }

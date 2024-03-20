@@ -46,18 +46,18 @@ public class AnimalManager implements IAnimalService {
     }
 
     @Override
-    public List<GetAnimalResponse> findAll() {
-        return animalMapper.toResponse(animalRepository.findAll());
+    public List<Animal> findAll() {
+        return animalRepository.findAll();
     }
 
     @Override
-    public GetAnimalResponse findById(Long id) {
+    public Animal findById(Long id) {
         Optional<Animal> animal = animalRepository.findById(id);
         // Değerlendirme formu 25
         if(animal.isEmpty()){
             throw new RuntimeException(id + " id’li kayıt sistemde bulunamadı.");
         }
-        return animalMapper.toResponse(animal.get());
+        return animal.get();
 
         /*if(animalRepository.existsById(id)){
             return animalMapper.toResponse(animalRepository.findById(id).get());
@@ -66,12 +66,12 @@ public class AnimalManager implements IAnimalService {
     }
 
     @Override
-    public List<GetAnimalResponse> findByNameLike(String name) {
-        return animalMapper.toResponse(animalRepository.findByNameStartingWith(name));
+    public List<Animal> findByNameLike(String name) {
+        return animalRepository.findByNameStartingWith(name);
     }
 
     @Override
-    public List<GetAnimalResponse> findByCustomer(Long id) {
-        return animalMapper.toResponse(animalRepository.findByCustomerId(id));
+    public List<Animal> findByCustomer(Long id) {
+        return animalRepository.findByCustomerId(id);
     }
 }

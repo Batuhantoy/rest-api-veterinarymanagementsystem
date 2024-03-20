@@ -14,6 +14,6 @@ public interface IAppointmentService {
     boolean delete(Long id);
     List<Appointment> findAll();
     Appointment findById(Long id);
-    List<GetAppointmentResponse> findByBetweenDateAndDoctor(LocalDate startDate, LocalDate endDate, String doctorName);
-    List<GetAppointmentResponse> findByBetweenDateAndAnimal(LocalDate startDate, LocalDate endDate, String animalName);
+    List<Appointment> findByBetweenDateAndDoctor(LocalDate startDate, LocalDate endDate, String doctorName);
+    List<Appointment> findByBetweenDateAndAnimal(LocalDate startDate, LocalDate endDate, String animalName);
 }

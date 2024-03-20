@@ -5,6 +5,7 @@ import dev.patika.spring.core.ResponseHandler;
 import dev.patika.spring.model.dto.requests.AddCustomerRequest;
 import dev.patika.spring.model.dto.requests.UpdateCustomerRequest;
 import dev.patika.spring.model.dto.responses.GetCustomerResponse;
+import dev.patika.spring.model.entity.Customer;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable("id") Long id){
-        GetCustomerResponse data = customerService.findById(id);
+        Customer data = customerService.findById(id);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested Customer by Id", HttpStatus.OK,data);

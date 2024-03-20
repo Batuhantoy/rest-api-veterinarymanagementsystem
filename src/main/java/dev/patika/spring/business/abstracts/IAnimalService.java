@@ -13,8 +13,8 @@ public interface IAnimalService {
     AddAnimalRequest add(AddAnimalRequest request);
     UpdateAnimalRequest update(UpdateAnimalRequest request);
     boolean delete(Long id);
-    List<GetAnimalResponse> findAll();
-    GetAnimalResponse findById(Long id);
-    List<GetAnimalResponse> findByNameLike(String name);
-    List<GetAnimalResponse> findByCustomer(Long id);
+    List<Animal> findAll();
+    Animal findById(Long id);
+    List<Animal> findByNameLike(String name);
+    List<Animal> findByCustomer(Long id);
 }

@@ -73,18 +73,18 @@ public class AppointmentManager implements IAppointmentService {
 
 
     @Override
-    public List<GetAppointmentResponse> findByBetweenDateAndDoctor(LocalDate startDate, LocalDate endDate, String doctorName) {
+    public List<Appointment> findByBetweenDateAndDoctor(LocalDate startDate, LocalDate endDate, String doctorName) {
         if(startDate!=null || endDate!=null){
-            return appointmentMapper.toResponse(appointmentRepository.findByAppointmentDateBetweenAndDoctorName(startDate, endDate, doctorName));
+            return appointmentRepository.findByAppointmentDateBetweenAndDoctorName(startDate, endDate, doctorName);
         }
         return null;
     }
 
 
     @Override
-    public List<GetAppointmentResponse> findByBetweenDateAndAnimal(LocalDate startDate, LocalDate endDate, String animalName) {
+    public List<Appointment> findByBetweenDateAndAnimal(LocalDate startDate, LocalDate endDate, String animalName) {
         if(startDate!=null || endDate!=null){
-            return appointmentMapper.toResponse(appointmentRepository.findByAppointmentDateBetweenAndAnimalName(startDate, endDate, animalName));
+            return appointmentRepository.findByAppointmentDateBetweenAndAnimalName(startDate, endDate, animalName);
         }
         return null;
     }

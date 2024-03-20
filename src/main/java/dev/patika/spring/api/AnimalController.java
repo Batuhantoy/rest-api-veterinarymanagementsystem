@@ -6,6 +6,7 @@ import dev.patika.spring.model.dto.requests.AddAnimalRequest;
 import dev.patika.spring.model.dto.requests.UpdateAnimalRequest;
 import dev.patika.spring.model.dto.requests.UpdateCustomerRequest;
 import dev.patika.spring.model.dto.responses.GetAnimalResponse;
+import dev.patika.spring.model.entity.Animal;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class AnimalController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(@PathVariable("id") Long id){
-        GetAnimalResponse data = animalService.findById(id);
+        Animal data = animalService.findById(id);
         if(data!=null){
             return ResponseHandler
                     .responseBuilder("Requested animal by Id", HttpStatus.OK,data);
@@ -48,7 +49,7 @@ public class AnimalController {
     // Değerlendirme formu 18
     @GetMapping("/customer/{customerId}")
     public ResponseEntity<Object> findByCustomer(@PathVariable("customerId") Long id){
-        List<GetAnimalResponse> data = animalService.findByCustomer(id);
+        List<Animal> data = animalService.findByCustomer(id);
         if(!data.isEmpty()){
             return ResponseHandler
                     .responseBuilder("Request Animals by Customer", HttpStatus.OK,data);

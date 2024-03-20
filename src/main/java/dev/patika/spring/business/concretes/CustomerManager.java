@@ -53,14 +53,14 @@ public class CustomerManager implements ICustomerService {
     }
 
     @Override
-    public GetCustomerResponse findById(Long id) {
-        return customerMapper.toResponse(customerRepository.findById(id).orElse(null));
+    public Customer findById(Long id) {
+        return customerRepository.findById(id).orElse(null);
     }
 
     // Değerlendirme formu 17
     @Override
-    public List<GetCustomerResponse> findByNameLike(String name) {
-        return customerMapper.toResponse(customerRepository.findByNameStartingWith(name));
+    public List<Customer> findByNameLike(String name) {
+        return customerRepository.findByNameStartingWith(name);
     }
 
 }

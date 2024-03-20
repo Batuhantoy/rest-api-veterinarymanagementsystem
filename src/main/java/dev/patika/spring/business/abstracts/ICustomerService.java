@@ -13,6 +13,6 @@ public interface ICustomerService {
     UpdateCustomerRequest update(UpdateCustomerRequest request);
     boolean delete(Long id);
     List<Customer> findAll();
-    GetCustomerResponse findById(Long id);
-    List<GetCustomerResponse> findByNameLike(String name);
+    Customer findById(Long id);
+    List<Customer> findByNameLike(String name);
 }

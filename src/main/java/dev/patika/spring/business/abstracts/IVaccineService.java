@@ -12,9 +12,9 @@ public interface IVaccineService {
     AddVaccineRequest add(AddVaccineRequest request);
     UpdateVaccineRequest update(UpdateVaccineRequest request);
     boolean delete(Long id);
-    List<GetVaccineResponse> findAll();
-    List<GetVaccineResponse> findByAnimalId(Long animalId);
-    GetVaccineResponse findById(Long id);
-    List<GetVaccineResponse> findByDates(LocalDate startDate, LocalDate endDate);
+    List<Vaccine> findAll();
+    List<Vaccine> findByAnimalId(Long animalId);
+    Vaccine findById(Long id);
+    List<Vaccine> findByDates(LocalDate startDate, LocalDate endDate);
     public List<Vaccine> findByName(String name);
 }
